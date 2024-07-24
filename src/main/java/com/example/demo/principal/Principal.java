@@ -7,7 +7,6 @@ import com.example.demo.service.ConverteDados;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Principal {
 
