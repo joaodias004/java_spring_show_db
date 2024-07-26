@@ -4,9 +4,8 @@ import com.example.demo.model.*;
 import com.example.demo.repository.SerieRepository;
 import com.example.demo.service.ConsumoAPI;
 import com.example.demo.service.ConverteDados;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.sound.midi.Sequence;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -41,6 +40,8 @@ public class Principal {
                     6 - Top 10 séries
                     7 - Buscar série por categoria
                     8 - Filtro
+                    9 - Busca de episódios por trecho
+                    10 - Top 10 episódios por série
                     0 - Sair
                     """;
 
@@ -72,6 +73,15 @@ public class Principal {
                     break;
                 case 8:
                     FiltroMultiplo();
+                case 9:
+                    BuscaEpisodiosPorTrecho();
+                    break;
+                case 10:
+                    topEpisodiosPorSerie();
+                    break;
+                case 11:
+                    buscarEpisodiosPorData();
+                    break;
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -81,11 +91,56 @@ public class Principal {
         }
     }
 
-    private void FiltroMultiplo() {
+    private void buscarEpisodiosPorData() {
+        buscarSeriePorTitulo();
+        if (serieBusca.isPresent()) {
+            System.out.println("Qual o ano inicial?");
+            int anoInicial = leitura.nextInt();
+            leitura.nextLine();
+            System.out.println("Qual o ano limite?");
+            int anoLimite = leitura.nextInt();
+            leitura.nextLine();
+            Serie serie = serieBusca.get();
+            List<Episodio> episodios = repositorio.findBySerie(serie);
+            List<Episodio> episodiosPorData = episodios.stream()
+                    .filter(e -> e.getDataLancamento().getYear() >= anoInicial && e.getDataLancamento().getYear() <= anoLimite)
+                    .collect(Collectors.toList());
+            episodiosPorData.forEach(System.out::println);
+        }
+    }
+
+    private Optional<Serie> serieBusca;
+    private void topEpisodiosPorSerie(){
+        buscarSeriePorTitulo();
+        if(serieBusca.isPresent()){
+            Serie serie = serieBusca.get();
+            List<Episodio> topEpisodios = repositorio.topEpisodiosPorSerie(serie);
+            topEpisodios.forEach(e ->
+                    System.out.printf("Série: %s Temporada %s - Episódio %s - %s Avaliação %s\n",
+                            e.getSerie().getTitulo(), e.getTemporada(),
+                            e.getNumeroEpisodio(), e.getTitulo(), e.getAvaliacao() ));
+        }
+    }
+
+
+    private void BuscaEpisodiosPorTrecho(){
+        System.out.println("Qual o nome do episódio para busca?");
+        var trechoProcurado = leitura.nextLine();
+        List<Episodio> episodiosEncontrados = repositorio.episodiosPorTrecho(trechoProcurado);
+        episodiosEncontrados.forEach(e ->
+                System.out.printf("Série: %s Temporada %s - Episódio %s - %s\n",
+                        e.getSerie().getTitulo(), e.getTemporada(),
+                        e.getNumeroEpisodio(), e.getTitulo()));
+    }
+
+
+        private void FiltroMultiplo() {
         System.out.println("Série com até quantas temporadas?");
         var limiteTemporadas = leitura.nextInt();
+        leitura.nextLine();
         System.out.println("Deseja buscar séries a partir de que nota?");
         var avalicao = leitura.nextDouble();
+        leitura.nextLine();
         List <Serie> seriesFiltradas = repositorio.findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(limiteTemporadas, avalicao);
         System.out.println("Séries de acordo com seu filtro: ");
         seriesFiltradas.forEach(s ->
@@ -105,16 +160,17 @@ public class Principal {
     }
 
     private void buscarSeriePorTitulo() {
-        System.out.println("Digite o nome da série que deseja buscar");
+        System.out.println("Escolha um série pelo nome: ");
         var nomeSerie = leitura.nextLine();
-        Optional<Serie> serieBuscada = repositorio.findByTituloContainingIgnoreCase(nomeSerie);
+        serieBusca = repositorio.findByTituloContainingIgnoreCase(nomeSerie);
 
-        if(serieBuscada.isPresent()){
-            System.out.println("Dados da série" + serieBuscada.get());
+        if (serieBusca.isPresent()) {
+            System.out.println("Dados da série: " + serieBusca.get());
+
+        } else {
+            System.out.println("Série não encontrada!");
         }
-        else {
-            System.out.println("Série não encontrada");
-        }
+
     }
 
     private SerieRepository repositorio;
