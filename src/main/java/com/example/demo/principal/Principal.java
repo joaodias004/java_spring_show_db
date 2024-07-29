@@ -1,14 +1,11 @@
 package com.example.demo.principal;
-
 import com.example.demo.model.*;
 import com.example.demo.repository.SerieRepository;
 import com.example.demo.service.ConsumoAPI;
 import com.example.demo.service.ConverteDados;
-
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
-
 public class Principal {
 
     private Scanner leitura = new Scanner(System.in);
