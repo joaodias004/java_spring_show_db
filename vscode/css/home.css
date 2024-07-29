@@ -1,8 +1,8 @@
 body {
   background: linear-gradient(180.61deg,
-          #000000 25.16%,
-          #04254f 80%,
-          #409ecd 100%);
+          #383737 25.16%,
+          #383737 80%,
+          #383737 100%);
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -17,19 +17,21 @@ h1 {
   display: none;
 }
 
-select,
-option {
-  background-color: black;
+select {
+  border-radius: 25px;
+  background-color: rgb(87, 84, 84);
+  color: white;
+  font-size: 36px;
+  padding: 0 3em;
+}
+
+select option {
+  background-color: rgb(87, 84, 84);
   color: white;
   font-size: 24px;
   padding: 0 1em;
+  border-radius: 10px;
 }
-
-select {
-  border: none;
-  outline: none;
-}
-
 
 h2 {
   color: white;
@@ -51,8 +53,8 @@ main {
 }
 
 .cabecalho__logo img {
-  width: 150px;
-  height: 50px;
+  width: 400px;
+  height: 250px;
 }
 
 .material-symbols-outlined {
@@ -87,3 +89,4 @@ main {
 
 
 }
+

@@ -1,66 +1,141 @@
 body {
+    background: linear-gradient(180.61deg, #d2e4d2 25.16%, #d2e4d2 80%, #d2e4d2 100%);
     background-size: cover;
-    background-image: linear-gradient(180.61deg,
-            #000000 25.16%,
-            #3e6d3e 80%,
-            #68b97a 100%);
-    padding: 5em;
-    height: 100%;
-    min-height: 100vh;
-    /* Defina a altura como 100vh para ocupar toda a tela */
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
+.header {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1em 2em;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
 
-.ficha img {
-    margin: 0 3em 2em 0;
+.header h1 {
+    margin: 0;
+    color: #fff;
+    font-size: 2em;
+}
+
+.ficha {
+    padding: 6em 2em 2em; /* Adjust padding for content below fixed header */
+    max-width: 1200px;
+    margin: auto;
 }
 
 .ficha-descricao {
     display: flex;
+    align-items: flex-start; /* Align items at the top */
+    gap: 2em;
+    margin-bottom: 2em;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2em;
+    border-radius: 8px;
+    flex-wrap: wrap; /* Ensure wrapping if container is too small */
+}
+
+.ficha-descricao img {
+    max-width: 50%; /* Ensure image does not exceed half of the container width */
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 .ficha-descricao div {
-    display: flex;
-    flex-direction: column;
-    gap: 3em;
-}
-
-.episodios-lista {
-    height: 25vh;
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 1em;
-    flex-wrap: wrap;
-    list-style-type: none;
+}
+
+.ficha-descricao h2 {
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.ficha-descricao p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.ficha-temporada, .episodios {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2em;
+    border-radius: 8px;
+    margin-bottom: 2em;
+}
+
+.episodios {
+    display: none; /* Hide the episodios container initially */
+}
+
+h2, h3 {
+    color: #fff;
 }
 
 h2 {
-    font-size: 48px;
+    font-size: 1.8em;
+    margin-bottom: 1em;
 }
 
-p {
-    font-size: 22px;
+h3 {
+    font-size: 1.4em;
+    margin-bottom: 1em;
 }
 
 select,
 option {
-    font-size: 24px;
-    padding: 0 1em;
-    margin-bottom: 1em;
-}
-
-select {
-    border-radius: 24px;
+    font-size: 1.2em;
+    padding: 0.5em 1em;
+    border-radius: 8px;
     border: none;
     outline: none;
-    width: 10%;
 }
 
-@media screen and (max-width: 900px) {
+.dropdown-select {
+    width: 100%;
+    max-width: 300px;
+    background: #fff;
+    color: #000;
+}
 
-    .ficha-descricao,
-    .episodios-lista {
-        display: block;
+.episodios-lista {
+    list-style: none;
+    padding: 0;
+}
+
+.episodios-lista li {
+    padding: 0.5em;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    margin-bottom: 0.5em;
+}
+
+/* Adjustments for responsive layout */
+@media screen and (max-width: 1200px) {
+    .ficha-descricao {
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center; /* Center content horizontally */
+    }
+    .ficha-descricao img {
+        max-width: 100%;
+    }
+    .ficha-descricao div {
+        max-width: 100%;
     }
 }
 
+@media screen and (max-width: 900px) {
+    .ficha {
+        padding: 4em 1em 1em;
+    }
+}
