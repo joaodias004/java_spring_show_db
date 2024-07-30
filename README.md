@@ -74,7 +74,7 @@ Uso
 
 Como Utilizar
 
-    Clone o repositório usando git clone <URL do repositório>.
+    Clone o repositório usando git clone <https://github.com/joaodias004/java_spring_show_db>.
     Navegue até o diretório do projeto e execute o arquivo TvDbApplication.java para iniciar o backend.
     Abra o arquivo index.html com um servidor ao vivo, como o Live Server no Visual Studio Code.
 
@@ -132,6 +132,6 @@ Usage
 
 How to Use
 
-    Clone the repository using git clone <repository URL>.
+    Clone the repository using git clone <https://github.com/joaodias004/java_spring_show_db>.
     Navigate to the project directory and run the TvDbApplication.java file to start the backend.
     Open the index.html file with a live server, such as the Live Server in Visual Studio Code.
