@@ -1,5 +1,9 @@
 TvDb Website
 
+
+Projeto ainda está em desenvolvimento! // Project still under development!
+
+
 *english version is below the following portuguese explanation*
 
 # PORTUGUESE
