@@ -4,8 +4,45 @@ const elementos = {
     top10: document.querySelector('[data-name="top10"]'),
     lancamentos: document.querySelector('[data-name="lancamentos"]'),
     series: document.querySelector('[data-name="series"]'),
-    searchResults: document.querySelector('[data-name="search-results"]') // Add this line
+    searchResults: document.querySelector('[data-name="search-results"]')
 };
+
+// Function to create carousel items
+function criarCarouselItens(elemento, dados) {
+    const carousel = elemento.querySelector('.carousel');
+    carousel.innerHTML = dados.map(filme => `
+        <div class="carousel-item">
+            <a href="/detalhes.html?id=${filme.id}">
+                <img src="${filme.poster}" alt="${filme.titulo}">
+            </a>
+        </div>
+    `).join('');
+}
+
+// Function to initialize carousel buttons
+function inicializarCarousel(elemento) {
+    const carousel = elemento.querySelector('.carousel');
+    const prevButton = elemento.querySelector('#prev-button-series');
+    const nextButton = elemento.querySelector('#next-button-series');
+
+    let scrollAmount = 0;
+    const itemWidth = document.querySelector('.carousel-item').offsetWidth + 10; // Adjust based on your CSS
+
+    nextButton.addEventListener('click', () => {
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        if (scrollAmount < maxScroll) {
+            scrollAmount = Math.min(scrollAmount + itemWidth, maxScroll);
+            carousel.style.transform = `translateX(-${scrollAmount}px)`;
+        }
+    });
+
+    prevButton.addEventListener('click', () => {
+        if (scrollAmount > 0) {
+            scrollAmount = Math.max(scrollAmount - itemWidth, 0);
+            carousel.style.transform = `translateX(-${scrollAmount}px)`;
+        }
+    });
+}
 
 function criarListaFilmes(elemento, dados) {
     const ulExistente = elemento.querySelector('ul');
@@ -13,18 +50,23 @@ function criarListaFilmes(elemento, dados) {
         elemento.removeChild(ulExistente);
     }
 
-    const ul = document.createElement('ul');
-    ul.className = 'lista';
-    const listaHTML = dados.map((filme) => `
-        <li>
-            <a href="/detalhes.html?id=${filme.id}">
-                <img src="${filme.poster}" alt="${filme.titulo}">
-            </a>
-        </li>
-    `).join('');
+    if (elemento.dataset.name === 'series') {
+        criarCarouselItens(elemento, dados);
+        inicializarCarousel(elemento);
+    } else {
+        const ul = document.createElement('ul');
+        ul.className = 'lista';
+        const listaHTML = dados.map(filme => `
+            <li>
+                <a href="/detalhes.html?id=${filme.id}">
+                    <img src="${filme.poster}" alt="${filme.titulo}">
+                </a>
+            </li>
+        `).join('');
 
-    ul.innerHTML = listaHTML;
-    elemento.appendChild(ul);
+        ul.innerHTML = listaHTML;
+        elemento.appendChild(ul);
+    }
 }
 
 function lidarComErro(mensagemErro) {
@@ -93,7 +135,7 @@ function geraSeries() {
         .then(data => {
             criarListaFilmes(elementos.top10, data[0]);
             criarListaFilmes(elementos.lancamentos, data[1]);
-            criarListaFilmes(elementos.series, data[2].slice(0, 5));
+            criarListaFilmes(elementos.series, data[2].slice(0, 30)); // Adjust based on the number of items you want to display initially
         })
         .catch(error => {
             lidarComErro("Ocorreu um erro ao carregar os dados.");
