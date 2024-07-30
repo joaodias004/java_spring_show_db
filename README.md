@@ -12,6 +12,14 @@ Inicialmente, o projeto foi desenvolvido acompanhando o curso da Alura: 'Desenvo
 
 
 Atualmente, o projeto utiliza uma base de dados SQLite, disponível no repositório com 30 séries para testes, e permite adicionar novas séries através da parte de linha de comando do aplicativo via API da OMDB.
+
+
+![image](https://github.com/user-attachments/assets/58fad673-0aaf-4399-9494-b4a2615dc985)
+
+
+![image](https://github.com/user-attachments/assets/9ee768f5-234b-4214-a8f3-827094b696bc)
+
+
 Recursos
 
     Página Inicial: Seções para novos lançamentos, títulos populares e um carrossel para várias séries de TV. Veja capturas de tela e exemplos [aqui].
