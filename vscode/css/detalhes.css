@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(180.61deg, #d2e4d2 25.16%, #d2e4d2 80%, #d2e4d2 100%);
+    background: linear-gradient(180.61deg, #494949 25.16%, #494949 80%, #494949 100%);
     background-size: cover;
     font-family: 'Inter', sans-serif;
     color: #fff;
@@ -25,24 +25,24 @@ body {
 }
 
 .ficha {
-    padding: 6em 2em 2em; /* Adjust padding for content below fixed header */
+    padding: 6em 2em 2em; 
     max-width: 1200px;
     margin: auto;
 }
 
 .ficha-descricao {
     display: flex;
-    align-items: flex-start; /* Align items at the top */
+    align-items: flex-start;
     gap: 2em;
     margin-bottom: 2em;
     background: rgba(0, 0, 0, 0.7);
     padding: 2em;
     border-radius: 8px;
-    flex-wrap: wrap; /* Ensure wrapping if container is too small */
+    flex-wrap: wrap;
 }
 
 .ficha-descricao img {
-    max-width: 50%; /* Ensure image does not exceed half of the container width */
+    max-width: 50%;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
@@ -75,7 +75,7 @@ body {
 }
 
 .episodios {
-    display: none; /* Hide the episodios container initially */
+    display: none;
 }
 
 h2, h3 {
@@ -120,11 +120,10 @@ option {
     margin-bottom: 0.5em;
 }
 
-/* Adjustments for responsive layout */
 @media screen and (max-width: 1200px) {
     .ficha-descricao {
-        flex-direction: column; /* Stack image and text vertically */
-        align-items: center; /* Center content horizontally */
+        flex-direction: column;
+        align-items: center; 
     }
     .ficha-descricao img {
         max-width: 100%;

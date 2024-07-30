@@ -18,11 +18,11 @@ h1 {
 }
 
 select {
-  border-radius: 25px;
+  border-radius: 10px;
   background-color: rgb(87, 84, 84);
   color: white;
-  font-size: 36px;
-  padding: 0 3em;
+  font-size: 23px;
+  padding: 0 1em;
 }
 
 select option {
@@ -53,8 +53,8 @@ main {
 }
 
 .cabecalho__logo img {
-  width: 400px;
-  height: 250px;
+  width: 200px;
+  height: 150px;
 }
 
 .material-symbols-outlined {
@@ -87,6 +87,43 @@ main {
       overflow-x: scroll;
   }
 
-
 }
 
+
+.material-symbols-outlined {
+  color: white;
+  font-size: 48px;
+  transition: font-size 0.3s;
+}
+
+.material-symbols-outlined:hover {
+  font-size: 52px; 
+  cursor: pointer;
+}
+
+select {
+  border-radius: 10px;
+  background-color: rgb(87, 84, 84);
+  color: white;
+  font-size: 23px;
+  padding: 0 1em;
+  transition: background-color 0.3s, font-size 0.3s;
+}
+
+select:hover {
+  background-color: #666;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.lista li img {
+  width: 300px;
+  height: 444px;
+  transition: transform 0.3s;
+}
+
+.lista li img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}

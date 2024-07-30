@@ -8,13 +8,10 @@ const elementos = {
 };
 
 // Função para criar a lista de filmes
-
-// Função para criar a lista de filmes
 function criarListaFilmes(elemento, dados) {
-    // Verifique se há um elemento <ul> dentro da seção
     const ulExistente = elemento.querySelector('ul');
 
-    // Se um elemento <ul> já existe dentro da seção, remova-o
+
     if (ulExistente) {
         elemento.removeChild(ulExistente);
     }
@@ -39,7 +36,7 @@ function lidarComErro(mensagemErro) {
 }
 
 const categoriaSelect = document.querySelector('[data-categorias]');
-const sectionsParaOcultar = document.querySelectorAll('.section'); // Adicione a classe CSS 'hide-when-filtered' às seções e títulos que deseja ocultar.
+const sectionsParaOcultar = document.querySelectorAll('.section');
 
 categoriaSelect.addEventListener('change', function () {
     const categoria = document.querySelector('[data-name="categoria"]');

@@ -1,5 +1,4 @@
 package com.example.demo.Controller;
-
 import com.example.demo.SerieDTO.EpisodioDTO;
 import com.example.demo.SerieDTO.SerieDTO;
 import com.example.demo.service.SerieService;
@@ -52,8 +51,6 @@ public class SerieController {
     public List<SerieDTO> obterSeriesPorCategoria(@PathVariable String nomeGenero){
         return servico.obterSeriesPorCategoria(nomeGenero);
     }
-
-
 }
 
 
