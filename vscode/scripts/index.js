@@ -7,7 +7,7 @@ const elementos = {
     searchResults: document.querySelector('[data-name="search-results"]')
 };
 
-// Function to create carousel items
+
 function criarCarouselItens(elemento, dados) {
     const carousel = elemento.querySelector('.carousel');
     carousel.innerHTML = dados.map(filme => `
@@ -19,14 +19,13 @@ function criarCarouselItens(elemento, dados) {
     `).join('');
 }
 
-// Function to initialize carousel buttons
 function inicializarCarousel(elemento) {
     const carousel = elemento.querySelector('.carousel');
     const prevButton = elemento.querySelector('#prev-button-series');
     const nextButton = elemento.querySelector('#next-button-series');
 
     let scrollAmount = 0;
-    const itemWidth = document.querySelector('.carousel-item').offsetWidth + 10; // Adjust based on your CSS
+    const itemWidth = document.querySelector('.carousel-item').offsetWidth + 10;
 
     nextButton.addEventListener('click', () => {
         const maxScroll = carousel.scrollWidth - carousel.clientWidth;
@@ -135,7 +134,7 @@ function geraSeries() {
         .then(data => {
             criarListaFilmes(elementos.top10, data[0]);
             criarListaFilmes(elementos.lancamentos, data[1]);
-            criarListaFilmes(elementos.series, data[2].slice(0, 30)); // Adjust based on the number of items you want to display initially
+            criarListaFilmes(elementos.series, data[2].slice(0, 30));
         })
         .catch(error => {
             lidarComErro("Ocorreu um erro ao carregar os dados.");

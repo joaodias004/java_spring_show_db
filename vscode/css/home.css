@@ -182,14 +182,14 @@ select:hover {
 }
 
 .carousel-item {
-  min-width: 200px; /* Adjust based on your image size */
+  min-width: 200px;
   margin-right: 1em;
 }
 
 .carousel-item img {
   width: 100%;
-  height: 300px; /* Fixed height for consistency */
-  object-fit: cover; /* Ensures the image covers the area without stretching */
+  height: 300px;
+  object-fit: cover;
   border-radius: 10px;
 }
 

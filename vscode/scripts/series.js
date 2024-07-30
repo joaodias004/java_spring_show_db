@@ -6,12 +6,12 @@ const listaTemporadas = document.getElementById('temporadas-select');
 const fichaSerie = document.getElementById('temporadas-episodios');
 const fichaDescricao = document.getElementById('ficha-descricao');
 
-// Function to load seasons
+
 function carregarTemporadas() {
     getDados(`/series/${serieId}/temporadas/todas`)
         .then(data => {
             const temporadasUnicas = [...new Set(data.map(temporada => temporada.temporada))];
-            listaTemporadas.innerHTML = ''; // Clear existing options
+            listaTemporadas.innerHTML = '';
 
             const optionDefault = document.createElement('option');
             optionDefault.value = '';
@@ -35,9 +35,9 @@ function carregarTemporadas() {
         });
 }
 
-// Function to load episodes for a season
+
 function carregarEpisodios() {
-    if (!listaTemporadas.value) return; // Do not load episodes if no season is selected
+    if (!listaTemporadas.value) return;
 
     getDados(`/series/${serieId}/temporadas/${listaTemporadas.value}`)
         .then(data => {
@@ -64,14 +64,13 @@ function carregarEpisodios() {
                 fichaSerie.appendChild(ul);
             });
 
-            fichaSerie.style.display = 'block'; // Show the episodes container
+            fichaSerie.style.display = 'block'; 
         })
         .catch(error => {
             console.error('Erro ao obter episódios:', error);
         });
 }
 
-// Function to load series info
 function carregarInfoSerie() {
     getDados(`/series/${serieId}`)
         .then(data => {
@@ -92,9 +91,7 @@ function carregarInfoSerie() {
         });
 }
 
-// Add event listener to the select element
 listaTemporadas.addEventListener('change', carregarEpisodios);
 
-// Load series info and seasons on page load
 carregarInfoSerie();
 carregarTemporadas();

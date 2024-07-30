@@ -1,4 +1,3 @@
-// URL base da API
 const baseURL = 'http://localhost:8080';
 
 export default function getDados(endpoint) {
