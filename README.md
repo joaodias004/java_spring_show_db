@@ -6,8 +6,9 @@ Projeto ainda está em desenvolvimento! // Project still under development!
 
 *english version is below the following portuguese explanation*
 
-# PORTUGUESE
-Visão Geral
+### PORTUGUESE
+
+## Visão Geral
 
 O TvDb é um aplicativo web projetado para fornecer aos usuários informações sobre séries de TV. O site oferece recursos para explorar novos lançamentos, títulos populares e informações detalhadas sobre séries individuais. 
 
