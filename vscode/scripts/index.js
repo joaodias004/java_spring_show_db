@@ -1,17 +1,14 @@
 import getDados from "./getDados.js";
 
-// Mapeia os elementos DOM que você deseja atualizar
 const elementos = {
     top10: document.querySelector('[data-name="top10"]'),
     lancamentos: document.querySelector('[data-name="lancamentos"]'),
-    series: document.querySelector('[data-name="series"]')
+    series: document.querySelector('[data-name="series"]'),
+    searchResults: document.querySelector('[data-name="search-results"]') // Add this line
 };
 
-// Função para criar a lista de filmes
 function criarListaFilmes(elemento, dados) {
     const ulExistente = elemento.querySelector('ul');
-
-
     if (ulExistente) {
         elemento.removeChild(ulExistente);
     }
@@ -30,9 +27,36 @@ function criarListaFilmes(elemento, dados) {
     elemento.appendChild(ul);
 }
 
-// Função genérica para tratamento de erros
 function lidarComErro(mensagemErro) {
     console.error(mensagemErro);
+}
+
+const searchInput = document.getElementById('search-input');
+const searchIcon = document.getElementById('search-icon');
+
+searchIcon.addEventListener('click', () => {
+    if (searchInput.style.display === 'none') {
+        searchInput.style.display = 'block';
+        searchInput.focus();
+    } else {
+        const query = searchInput.value.trim();
+        if (query) {
+            getDados(`/series/search?query=${query}`)
+                .then(data => {
+                    criarListaFilmes(elementos.searchResults, data);
+                    showSearchResults();
+                })
+                .catch(error => {
+                    lidarComErro("Ocorreu um erro ao buscar as séries.");
+                });
+        }
+    }
+});
+
+function showSearchResults() {
+    const sections = document.querySelectorAll('main > section');
+    sections.forEach(section => section.classList.add('hidden'));
+    elementos.searchResults.classList.remove('hidden');
 }
 
 const categoriaSelect = document.querySelector('[data-categorias]');
@@ -43,20 +67,15 @@ categoriaSelect.addEventListener('change', function () {
     const categoriaSelecionada = categoriaSelect.value;
 
     if (categoriaSelecionada === 'todos') {
-
         for (const section of sectionsParaOcultar) {
-            section.classList.remove('hidden')
+            section.classList.remove('hidden');
         }
         categoria.classList.add('hidden');
-
     } else {
-
         for (const section of sectionsParaOcultar) {
-            section.classList.add('hidden')
+            section.classList.add('hidden');
         }
-
-        categoria.classList.remove('hidden')
-        // Faça uma solicitação para o endpoint com a categoria selecionada
+        categoria.classList.remove('hidden');
         getDados(`/series/categoria/${categoriaSelecionada}`)
             .then(data => {
                 criarListaFilmes(categoria, data);
@@ -67,12 +86,9 @@ categoriaSelect.addEventListener('change', function () {
     }
 });
 
-// Array de URLs para as solicitações
 geraSeries();
 function geraSeries() {
     const urls = ['/series/top10', '/series/lancamentos', '/series'];
-
-    // Faz todas as solicitações em paralelo
     Promise.all(urls.map(url => getDados(url)))
         .then(data => {
             criarListaFilmes(elementos.top10, data[0]);
@@ -82,6 +98,4 @@ function geraSeries() {
         .catch(error => {
             lidarComErro("Ocorreu um erro ao carregar os dados.");
         });
-
 }
-

@@ -3,10 +3,7 @@ import com.example.demo.SerieDTO.EpisodioDTO;
 import com.example.demo.SerieDTO.SerieDTO;
 import com.example.demo.service.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +13,11 @@ public class SerieController {
 
     @Autowired
     private SerieService servico;
+
+    @GetMapping("/search")
+    public List<SerieDTO> searchSeries(@RequestParam String query) {
+        return servico.searchSeries(query);
+    }
 
     @GetMapping
     public List<SerieDTO> obterSeries() {

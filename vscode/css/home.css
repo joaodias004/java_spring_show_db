@@ -47,6 +47,10 @@ main {
   padding: 1em 3em;
 }
 
+.cabecalho__opcoes {
+  display: flex;
+  align-items: center;
+}
 .cabecalho__logo {
   display: flex;
   gap: 1em;
@@ -127,3 +131,34 @@ select:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
+
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+#search-icon {
+  margin-right: 10px;
+}
+
+#search-input {
+  flex: 1;
+  border-radius: 10px;
+  background-color: rgb(87, 84, 84);
+  color: white;
+  font-size: 18px;
+  padding: 0.5em;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s, font-size 0.3s, display 0.3s;
+}
+.hidden {
+  display: none;
+}
+
+.pesquisa {
+  min-height: 100vh;
+}
+

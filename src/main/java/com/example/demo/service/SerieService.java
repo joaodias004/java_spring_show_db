@@ -12,12 +12,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class SerieService {
+
     @Autowired
     private SerieRepository repositorio;
 
     public List<SerieDTO> obterTodasAsSeries() {
         return converteDados(repositorio.findAll());
-
     }
 
     public List<SerieDTO> obterTop10Series() {
@@ -62,6 +62,11 @@ public class SerieService {
                 .map(e -> new EpisodioDTO(e.getTemporada(), e.getNumeroEpisodio(), e.getTitulo()))
                 .collect(Collectors.toList());
     }
+
+    public List<SerieDTO> searchSeries(String query) {
+        return converteDados(repositorio.findAllByTituloContainingIgnoreCase(query));
+    }
+
 
     public List<SerieDTO> obterSeriesPorCategoria(String nomeGenero) {
         Categoria categoria = Categoria.fromPortugues(nomeGenero);

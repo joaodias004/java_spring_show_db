@@ -30,18 +30,21 @@
         </div>
 
         <div class="cabecalho__opcoes">
-            <span class="material-symbols-outlined">
-                search
-            </span>
-
+            <div class="search-container">
+                <span class="material-symbols-outlined" id="search-icon">
+                    search
+                </span>
+                <input type="text" id="search-input" placeholder="Search series..." style="display: none;">
+            </div>
             <span class="material-symbols-outlined">
                 notifications
             </span>
-
             <span class="material-symbols-outlined">
                 account_circle
             </span>
         </div>
+        
+        
     </header>
 
     <main>
@@ -65,7 +68,11 @@
                 Titulos no TvDb
             </h2>
         </section>
-
+        
+        <section data-name="search-results" class="hidden pesquisa">
+            <h2>Resultados da busca</h2>
+        </section>
+        
         <section data-name="categoria" class="hidden pesquisa">
             <h2>Titulos no TvDb</h2>
         </section>
