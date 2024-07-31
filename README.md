@@ -31,6 +31,10 @@ Já que as sinopses da API da OMDB estão em Inglês também utilizei o MyMemory
 ![image](https://github.com/user-attachments/assets/9ee768f5-234b-4214-a8f3-827094b696bc)
 
 
+## Atualizações
+   *1.1 Adicionei campos de *Data de lançamento* e *média de avaliação* para cada episódio na aba de detalhes para cada série.
+
+   
 ## Recursos
 
     * Página Inicial: Seções para novos lançamentos, títulos populares e um carrossel para várias séries de TV. Veja capturas de tela e exemplos [aqui].
@@ -112,6 +116,9 @@ Currently, the project uses an SQLite database, available in the repository with
 
 
 Since the OMBD's API plot information is written in english, and my project will be seen by mostly brazillian people, i decided to use MyMemory´s translating API to translate the text to portuguese.
+
+## Updates:
+    * 1.1 Added *Release date* and *Average rate* for every episode in the show's details.
 
 
 ## Features
