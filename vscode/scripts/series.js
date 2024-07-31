@@ -49,10 +49,40 @@ function carregarEpisodios() {
 
                 const episodiosTemporadaAtual = data.filter(serie => serie.temporada === temporada);
 
+                function filtroAvaliacao(avaliacao) {
+                    if (typeof avaliacao !== 'number' || isNaN(avaliacao) || avaliacao <= 0) {
+                      return 'N/D';
+                    } else {
+                      return avaliacao;
+                    }
+                  }
+                
+                function filtroData(data) {
+                if (!data || data === null || data === 'null') {
+                    return 'N/D';
+                } else {
+                    const date = new Date(data);
+                    if (isNaN(date.getTime())) {
+                    return 'N/D';
+                    } else {
+                    const day = date.getDate().toString().padStart(2, '0');
+                    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                    const year = date.getFullYear();
+                    return `${day}/${month}/${year}`;
+                    }
+                }
+
+        
+                }
                 const listaHTML = episodiosTemporadaAtual.map(serie => `
-                    <li>
-                        ${serie.numeroEpisodio} - ${serie.titulo}
-                    </li>
+                <li>
+                    <div class="episode-details">
+                        ${(serie.numeroEpisodio)} - ${(serie.titulo)}
+                    </div>
+                    <div class="episode-info">
+                        Nota média: ${(filtroAvaliacao(serie.avaliacao))} - Data de Lançamento: ${(filtroData(serie.dataDeLancamento))}
+                    </div>
+                </li>
                 `).join('');
                 ul.innerHTML = listaHTML;
                 

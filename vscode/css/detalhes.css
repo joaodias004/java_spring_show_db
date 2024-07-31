@@ -114,12 +114,26 @@ option {
 }
 
 .episodios-lista li {
+    display: flex;
+    justify-content: space-between; /* Space out the two child elements */
+    align-items: center; /* Align items vertically centered */
     padding: 0.5em;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     margin-bottom: 0.5em;
 }
 
+.episode-details {
+    padding: 0.5em;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    margin-bottom: 0.5em;
+}
+
+.episode-info {
+    /* Align to the right */
+    text-align: right;
+}
 @media screen and (max-width: 1200px) {
     .ficha-descricao {
         flex-direction: column;

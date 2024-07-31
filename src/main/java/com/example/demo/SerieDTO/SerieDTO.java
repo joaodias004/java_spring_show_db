@@ -1,6 +1,5 @@
 package com.example.demo.SerieDTO;
 
-
 import com.example.demo.model.Categoria;
 
 public record SerieDTO(Long id,
