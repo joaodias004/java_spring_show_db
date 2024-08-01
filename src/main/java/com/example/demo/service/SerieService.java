@@ -63,6 +63,13 @@ public class SerieService {
                 .collect(Collectors.toList());
     }
 
+    public List<EpisodioDTO> obterTopEpisodios(Long id) {
+        return repositorio.obterTopEpisodios(id)
+                .stream()
+                .map(e -> new EpisodioDTO(e.getTemporada(), e.getNumeroEpisodio(), e.getTitulo(), e.getAvaliacao(), e.getDataLancamento()))
+                .collect(Collectors.toList());
+    }
+
     public List<SerieDTO> searchSeries(String query) {
         return converteDados(repositorio.findAllByTituloContainingIgnoreCase(query));
     }

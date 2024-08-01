@@ -29,12 +29,16 @@ function carregarTemporadas() {
             optionTodos.value = 'todas';
             optionTodos.textContent = 'Todas as temporadas';
             listaTemporadas.appendChild(optionTodos);
+
+            const optionTopEpisodes = document.createElement('option');
+            optionTopEpisodes.value = 'top_episodes';
+            optionTopEpisodes.textContent = '10 Melhores Episódios';
+            listaTemporadas.appendChild(optionTopEpisodes);
         })
         .catch(error => {
             console.error('Erro ao obter temporadas:', error);
         });
 }
-
 
 function carregarEpisodios() {
     if (!listaTemporadas.value) return;
