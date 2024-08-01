@@ -33,6 +33,7 @@ Já que as sinopses da API da OMDB estão em Inglês também utilizei o MyMemory
 
 ## Atualizações
    *1.1 Adicionei campos de *Data de lançamento* e *média de avaliação* para cada episódio na aba de detalhes para cada série.
+   *1.2 Adicionei um endpoint e para uma opção que mostra os 10 episódios mais bem avaliados de cada série na aba de detalhes para as mesmas.
 
    
 ## Recursos
@@ -59,6 +60,7 @@ A API backend, construída com Java e Spring Boot, oferece os seguintes endpoint
     * Obter Todas as Temporadas: GET /series/{id}/temporadas/todas - Retorna todas as temporadas de uma série específica.
     * Obter Temporada por Número: GET /series/{id}/temporadas/{numero} - Retorna episódios de uma temporada específica.
     * Obter Séries por Categoria: GET /series/categoria/{nomeGenero} - Retorna séries com base em uma categoria especificada.
+    * Obter Top 10 episódios por Série: GET /series/{id}/temporadas/top_episodes - Retorna 10 episódios em ordem decrescente se baseando em avaliação.
 
 Exemplo de resposta JSON:
 ```json
@@ -118,8 +120,8 @@ Currently, the project uses an SQLite database, available in the repository with
 Since the OMBD's API plot information is written in english, and my project will be seen by mostly brazillian people, i decided to use MyMemory´s translating API to translate the text to portuguese.
 
 ## Updates:
-    * 1.1 Added *Release date* and *Average rate* for every episode in the show's details.
-
+    * 1.1: Added *Release date* and *Average rate* for every episode in the show's details.
+    * 1.2: Added an endpoint that returns the top 10 episodes for the show, right next to "all seasons" on every show´s details.
 
 ## Features
 
@@ -145,6 +147,7 @@ The backend API, built with Java and Spring Boot, provides the following endpoin
     * Get All Seasons: GET /series/{id}/temporadas/todas - Returns all seasons of a specific series.
     * Get Season by Number: GET /series/{id}/temporadas/{numero} - Returns episodes of a specific season.
     * Get Series by Category: GET /series/categoria/{nomeGenero} - Returns series based on a specified category.
+    * Get Top 10 Episodes by Series: GET /series/{id}/seasons/top_episodes - Returns 10 episodes in descending order based on rating.
 
 Example JSON Response: 
 
