@@ -16,3 +16,15 @@ public class create_db {
         }
     }
 }
+
+
+//CREATE TABLE users (
+    //    id INTEGER PRIMARY KEY AUTOINCREMENT,
+      //  username TEXT NOT NULL UNIQUE,
+      //  password TEXT NOT NULL
+//);
+
+
+//SELECT * FROM "user" u
+
+//INSERT INTO User (username, password) VALUES ('testUser1', '$2a$10$X5gO5z7DOU15dWXKT7Y9ueu82cfb/mGQiirxXS5eoNtDPjeK/68Se');

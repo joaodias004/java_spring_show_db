@@ -19,6 +19,11 @@ public class SerieController {
         return servico.searchSeries(query);
     }
 
+    @GetMapping("/test")
+    public String test() {
+        return "Test endpoint is working";
+    }
+
     @GetMapping
     public List<SerieDTO> obterSeries() {
         return servico.obterTodasAsSeries();
