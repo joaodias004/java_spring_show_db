@@ -45,9 +45,8 @@ public class AuthController {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
             );
-            // Ensure successful authentication
         } catch (AuthenticationException e) {
-            throw new Exception("Incorrect username or password", e);
+            throw new Exception("Usuario ou senha incorretos", e);
         }
 
         final UserDetails userDetails = customUserDetailsService.loadUserByUsername(user.getUsername());

@@ -18,7 +18,7 @@ public class UserService {
     public void createUser(String username, String password) {
         User user = new User();
         user.setUsername(username);
-        user.setPassword(password);  // Ensure this is encoded
+        user.setPassword(password);
         userRepository.save(user);
     }
 

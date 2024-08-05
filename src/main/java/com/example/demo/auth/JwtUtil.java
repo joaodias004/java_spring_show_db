@@ -3,6 +3,7 @@ package com.example.demo.auth;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +14,9 @@ import java.util.function.Function;
 
 @Component
 public class JwtUtil {
-    private final String SECRET = "LIBugBglN/AjKT783qEiYltCMeDCjjAbhMtMugFaS0I"; // Replace with a secure secret key
-    private final long EXPIRATION_TIME = 900_000; // 15 minutes
+
+    private final String SECRET = System.getenv("jwt_secret");
+    private final long EXPIRATION_TIME = 900_000;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -57,7 +59,5 @@ public class JwtUtil {
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-
-    // Additional utility methods...
 }
 

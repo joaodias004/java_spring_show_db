@@ -19,7 +19,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Implementar se precisar de permissões e roles
+        // Implementar permissões
         return null;
     }
 
