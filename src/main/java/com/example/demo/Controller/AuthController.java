@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.auth.JwtUtil;
 import com.example.demo.auth.User;
+import com.example.demo.exceptions.UsuarioDuplicadoException;
 import com.example.demo.service.CustomUserDetailsService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +34,13 @@ public class AuthController {
 
     @PostMapping("/register")
     public String register(@RequestBody User user) {
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        userService.createUser(user.getUsername(), encodedPassword);
-        return "User registered successfully";
+        try {
+            userService.createUser(user);
+            return "Usuario registrado!";
+        } catch (UsuarioDuplicadoException e) {
+            return e.getMessage();
+        }
     }
-
 
     @PostMapping("/login")
     public String createAuthenticationToken(@RequestBody User user) throws Exception {
