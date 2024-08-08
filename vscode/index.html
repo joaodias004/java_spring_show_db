@@ -19,6 +19,7 @@
         <div class="cabecalho__logo">
             <img src="./img/logo.png" alt="Logo Marca">
             <h1>TvDb</h1>
+            <div class="custom-select">
             <select data-categorias>
                 <option value="todos">Categorias</option>
                 <option value="comédia">Comédia</option>
@@ -28,7 +29,9 @@
                 <option value="aventura">Aventura</option>
             </select>
         </div>
-
+        </div>
+        <div>
+            
         <div class="cabecalho__opcoes">
             <div class="search-container">
                 <span class="material-symbols-outlined" id="search-icon">
@@ -36,10 +39,7 @@
                 </span>
                 <input type="text" id="search-input" placeholder="Procurar por séries..." style="display: none;">
             </div>
-            <span class="material-symbols-outlined">
-                notifications
-            </span>
-            <span class="material-symbols-outlined">
+            <span class="material-symbols-outlined" id="account-icon">
                 account_circle
             </span>
         </div>

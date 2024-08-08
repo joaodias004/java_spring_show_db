@@ -1,8 +1,8 @@
 body {
   background: linear-gradient(180.61deg,
-          #383737 25.16%,
-          #383737 80%,
-          #383737 100%);
+          #1e1e1e 25.16%,
+          #1e1e1e 80%,
+          #1e1e1e 100%);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -15,24 +15,8 @@ h1 {
   display: none;
 }
 
-select {
-  border-radius: 10px;
-  background-color: rgb(87, 84, 84);
-  color: white;
-  font-size: 23px;
-  padding: 0 1em;
-}
-
-select option {
-  background-color: rgb(87, 84, 84);
-  color: white;
-  font-size: 24px;
-  padding: 0 1em;
-  border-radius: 10px;
-}
-
 h2 {
-  color: white;
+  color: #e0e0e0;
 }
 
 main {
@@ -54,14 +38,14 @@ main {
   gap: 1em;
 }
 
-.cabecalho__logo img {
-  width: 200px;
-  height: 150px;
+.cabecalho__logo select {
+  height: 60px;
+  width: 160px; 
+  padding: 5px; 
 }
-
-.material-symbols-outlined {
-  color: white;
-  font-size: 48px
+.cabecalho__logo img {
+  width: 100px;
+  height: 75px;
 }
 
 .lista {
@@ -69,7 +53,6 @@ main {
   margin: 1em 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
   gap: 1em;
 }
 
@@ -79,7 +62,6 @@ main {
 }
 
 .pesquisa {
-
   min-height: 100vh;
 }
 
@@ -91,31 +73,69 @@ main {
 
 }
 
-
-.material-symbols-outlined {
-  color: white;
-  font-size: 48px;
-  transition: font-size 0.3s;
-}
-
 .material-symbols-outlined:hover {
   font-size: 52px; 
   cursor: pointer;
+  color: #4ec24e;
 }
 
-select {
+#account-icon {
+  color: #ffffff;
+  font-size: 48px;
+  transition: font-size 0.3s;
+  background-color: #153b15;
+  padding: 0 0.2em;
   border-radius: 10px;
-  background-color: rgb(87, 84, 84);
-  color: white;
-  font-size: 23px;
-  padding: 0 1em;
-  transition: background-color 0.3s, font-size 0.3s;
 }
 
-select:hover {
-  background-color: #666;
-  font-size: 25px;
+#account-icon:hover {
+  font-size: 52px; 
   cursor: pointer;
+  color: #33a733;
+}
+
+
+.custom-select {
+  position: relative;
+  display: inline-block;
+  font-size: 23px;
+  border-radius: 10px;
+}
+
+.custom-select select {
+  background-color: transparent; 
+  border: none;
+  font-size: 23px;
+  color: white;
+  padding: 0 1em;
+  border-radius: 10px;
+  appearance: none;
+  outline: none; 
+  transition: font-size 0.3s;
+}
+
+.custom-select select:hover {
+  font-size: 23px; 
+  cursor: pointer;
+}
+
+.custom-select::after {
+  content: "▼";
+  position: absolute;
+  top: 40%;
+  right: 0px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #153b15;
+  pointer-events: none;
+}
+
+.custom-select option {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  font-size: 24px;
+  padding: 0 1em;
+  border-radius: 10px;
 }
 
 .lista li img {
@@ -130,28 +150,34 @@ select:hover {
   cursor: pointer;
 }
 
-
-
 .search-container {
   display: flex;
-  align-items: center;
-  margin-right: 20px;
+  align-items: right;
+  margin-right: 10px;
 }
 
 #search-icon {
-  margin-right: 10px;
+  color: #ffffff;
+  font-size: 48px;
+  transition: font-size 0.3s;
+}
+
+#search-icon:hover {
+  font-size: 52px; 
+  cursor: pointer;
+  color: #4ec24e;
 }
 
 #search-input {
   flex: 1;
   border-radius: 10px;
-  background-color: rgb(87, 84, 84);
+  background-color: rgb(255, 255, 255);
   color: white;
   font-size: 18px;
   padding: 0.5em;
   border: none;
   outline: none;
-  transition: background-color 0.3s, font-size 0.3s, display 0.3s;
+  transition: background-color 0.9s, font-size 0.9s, display 0.9s;
 }
 .hidden {
   display: none;
