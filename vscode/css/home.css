@@ -59,6 +59,7 @@ main {
 .lista li img {
   width: 300px;
   height: 444px;
+  border-radius: 12px;
 }
 
 .pesquisa {
