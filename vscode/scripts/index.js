@@ -11,11 +11,12 @@ const elementos = {
 function criarCarouselItens(elemento, dados) {
     const carousel = elemento.querySelector('.carousel');
     carousel.innerHTML = dados.map(filme => `
-        <div class="carousel-item">
-            <a href="/detalhes.html?id=${filme.id}">
-                <img src="${filme.poster}" alt="${filme.titulo}">
-            </a>
-        </div>
+            <div class="carousel-item">
+                <a href="/detalhes.html?id=${filme.id}">
+                    <img src="${filme.poster}" alt="${filme.titulo}">
+                    <div class="nome-serie">${filme.titulo} - ⭐${filme.avaliacao}</div>
+                </a>
+            </div>
     `).join('');
 }
 
@@ -59,6 +60,7 @@ function criarListaFilmes(elemento, dados) {
             <li>
                 <a href="/detalhes.html?id=${filme.id}">
                     <img src="${filme.poster}" alt="${filme.titulo}">
+                    <div class="nome-serie">${filme.titulo} - ⭐${filme.avaliacao}</div>
                 </a>
             </li>
         `).join('');
